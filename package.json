@@ -82,6 +82,7 @@
   "devDependencies": {
     "@types/node": "^22.13.10",
     "@types/turndown": "^5.0.5",
+    "file2md-sample-plugin": "file:tests/plugins/file2md-sample-plugin",
     "tsup": "^8.4.0",
     "typescript": "^5.8.2",
     "vitest": "^3.0.8"

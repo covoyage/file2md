@@ -133,7 +133,7 @@ function listPackageDirs(nodeModulesRoot: string): string[] {
       continue;
     }
 
-    if (entry.isDirectory()) {
+    if (entry.isDirectory() || entry.isSymbolicLink()) {
       packageDirs.push(join(nodeModulesRoot, entry.name));
     }
   }

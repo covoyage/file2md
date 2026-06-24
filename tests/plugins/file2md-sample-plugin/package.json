@@ -1,0 +1,8 @@
+{
+  "name": "file2md-sample-plugin",
+  "version": "1.0.0",
+  "private": true,
+  "file2md": {
+    "plugin": "index.cjs"
+  }
+}
