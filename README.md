@@ -5,7 +5,7 @@
 
 **npm:** [`@covoyage/file2md`](https://www.npmjs.com/package/@covoyage/file2md) · **repo:** [github.com/covoyage/file2md](https://github.com/covoyage/file2md)
 
-Convert documents and media to Markdown for LLMs and text analysis pipelines.
+TypeScript library and CLI for converting files and office documents to Markdown.
 
 Works in **Node.js 18+** and **browsers** (including Svelte / Vite apps).
 

@@ -3,6 +3,7 @@ import { createRequire } from "node:module";
 import { dirname, join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import type { File2MDPlugin } from "./plugins.js";
+import { currentModuleRef } from "./utils/module-ref.js";
 
 export interface DiscoveredPluginEntry {
   name: string;
@@ -196,9 +197,7 @@ function createPluginFromModule(
 
 async function importPluginModule(modulePath: string): Promise<Record<string, unknown>> {
   if (modulePath.endsWith(".cjs")) {
-    const require = createRequire(
-      typeof __filename !== "undefined" ? __filename : import.meta.url,
-    );
+    const require = createRequire(currentModuleRef());
     return require(modulePath) as Record<string, unknown>;
   }
 

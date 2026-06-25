@@ -1,6 +1,7 @@
 import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
 import { pathToFileURL } from "node:url";
+import { currentModuleRef } from "./module-ref.js";
 
 export interface PdfJsNodeAssetUrls {
   standardFontDataUrl: string;
@@ -12,7 +13,7 @@ let cachedAssetUrls: PdfJsNodeAssetUrls | null = null;
 export function getPdfJsNodeAssetUrls(): PdfJsNodeAssetUrls {
   if (cachedAssetUrls) return cachedAssetUrls;
 
-  const require = createRequire(import.meta.url);
+  const require = createRequire(currentModuleRef());
   const packageJsonPath = require.resolve("pdfjs-dist/package.json");
   const root = dirname(packageJsonPath);
 

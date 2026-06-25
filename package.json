@@ -1,7 +1,7 @@
 {
   "name": "@covoyage/file2md",
   "version": "1.0.0",
-  "description": "Convert various file formats to Markdown for LLMs",
+  "description": "TypeScript library and CLI for converting files and office documents to Markdown.",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

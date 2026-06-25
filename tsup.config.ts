@@ -1,5 +1,20 @@
 import { defineConfig } from "tsup";
 
+function applyCjsImportMetaPolyfill(
+  options: { banner?: { js?: string }; define?: Record<string, string> },
+  format: string | undefined,
+): void {
+  if (format !== "cjs") return;
+
+  options.banner = {
+    js: `${options.banner?.js ?? ""}var __importMetaUrl=require("url").pathToFileURL(__filename).href;`,
+  };
+  options.define = {
+    ...options.define,
+    "import.meta.url": "__importMetaUrl",
+  };
+}
+
 export default defineConfig([
   {
     entry: [
@@ -20,6 +35,9 @@ export default defineConfig([
     treeshake: true,
     target: "es2022",
     platform: "neutral",
+    esbuildOptions(options, context) {
+      applyCjsImportMetaPolyfill(options, context.format);
+    },
     external: [
       "jszip",
       "linkedom",
@@ -59,6 +77,9 @@ export default defineConfig([
     target: "node18",
     platform: "node",
     outDir: "dist",
+    esbuildOptions(options, context) {
+      applyCjsImportMetaPolyfill(options, context.format);
+    },
     external: [
       "jszip",
       "linkedom",

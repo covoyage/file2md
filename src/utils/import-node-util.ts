@@ -1,10 +1,11 @@
 import { access } from "node:fs/promises";
-import { dirname, join } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { join } from "node:path";
+import { pathToFileURL } from "node:url";
+import { currentModuleDir } from "./module-ref.js";
 
 /** Resolve dist/utils or src/utils helpers from bundled or split builds. */
 export async function importNodeUtil<T>(filename: string): Promise<T> {
-  const dir = dirname(fileURLToPath(import.meta.url));
+  const dir = currentModuleDir();
   const candidates = [
     join(dir, filename),
     join(dir, "utils", filename),
