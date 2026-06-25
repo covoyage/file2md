@@ -98,4 +98,4 @@ export {
 export type { PdfJsModule, PdfJsNodeAssetUrls } from "./utils/pdfjs-node.js";
 export { preProcessDocx } from "./converter-utils/docx/pre-process.js";
 
-export const VERSION = "0.1.0";
+export const VERSION = "1.0.2";
