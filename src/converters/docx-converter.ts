@@ -109,7 +109,7 @@ export class DocxConverter extends DocumentConverter {
       ) {
         throw new MissingDependencyException(
           MISSING_DEPENDENCY_MESSAGE.replace("{converter}", "DocxConverter")
-            .replace("{extension}", ".docx")
+            .replaceAll("{extension}", ".docx")
             .replace("{feature}", "mammoth"),
         );
       }

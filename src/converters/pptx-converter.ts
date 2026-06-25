@@ -86,7 +86,7 @@ export class PptxConverter extends DocumentConverter {
       ) {
         throw new MissingDependencyException(
           MISSING_DEPENDENCY_MESSAGE.replace("{converter}", "PptxConverter")
-            .replace("{extension}", ".pptx")
+            .replaceAll("{extension}", ".pptx")
             .replace("{feature}", "jszip"),
         );
       }

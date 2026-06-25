@@ -1,4 +1,5 @@
 import { MissingDependencyException } from "../exceptions.js";
+import { importNodeUtil } from "../utils/import-node-util.js";
 
 export type TranscribeAudioFn = (
   data: Uint8Array,
@@ -125,7 +126,9 @@ async function defaultTranscribeAudio(
     throw new MissingDependencyException(MISSING_AUDIO_MESSAGE);
   }
 
-  const { convertToFlacWithFfmpeg } = await import("./transcribe-audio-node.js");
+  const { convertToFlacWithFfmpeg } = await importNodeUtil<
+    typeof import("./transcribe-audio-node.js")
+  >("transcribe-audio-node.js");
 
   try {
     if (audioFormat === "wav") {

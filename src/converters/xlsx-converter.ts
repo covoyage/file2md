@@ -26,7 +26,7 @@ async function loadXlsx() {
   } catch {
     throw new MissingDependencyException(
       MISSING_DEPENDENCY_MESSAGE.replace("{converter}", "XlsxConverter")
-        .replace("{extension}", ".xlsx")
+        .replaceAll("{extension}", ".xlsx")
         .replace("{feature}", "xlsx"),
     );
   }

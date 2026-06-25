@@ -89,7 +89,7 @@ async function loadPdfJsOrThrow() {
   } catch {
     throw new MissingDependencyException(
       MISSING_DEPENDENCY_MESSAGE.replace("{converter}", "PdfConverter")
-        .replace("{extension}", ".pdf")
+        .replaceAll("{extension}", ".pdf")
         .replace("{feature}", "pdfjs-dist"),
     );
   }
@@ -104,9 +104,9 @@ function isNodeRuntime(): boolean {
 
 async function extractWithPdftotext(data: Uint8Array): Promise<string | null> {
   if (!isNodeRuntime()) return null;
-  const { extractTextWithPdftotext } = await import(
-    "../utils/pdf-pdftotext-node.js"
-  );
+  const { extractTextWithPdftotext } = await importNodeUtil<
+    typeof import("../utils/pdf-pdftotext-node.js")
+  >("pdf-pdftotext-node.js");
   return extractTextWithPdftotext(data);
 }
 
@@ -124,9 +124,9 @@ async function extractWithPdfplumber(data: Uint8Array): Promise<string | null> {
 
 async function extractWithPdfminer(data: Uint8Array): Promise<string | null> {
   if (!isNodeRuntime()) return null;
-  const { extractTextWithPdfminer } = await import(
-    "../utils/pdf-pdfminer-node.js"
-  );
+  const { extractTextWithPdfminer } = await importNodeUtil<
+    typeof import("../utils/pdf-pdfminer-node.js")
+  >("pdf-pdfminer-node.js");
   return extractTextWithPdfminer(data);
 }
 
@@ -135,9 +135,9 @@ async function extractPageWithPdftotext(
   pageNumber: number,
 ): Promise<string | null> {
   if (!isNodeRuntime()) return null;
-  const { extractPageTextWithPdftotext } = await import(
-    "../utils/pdf-pdftotext-node.js"
-  );
+  const { extractPageTextWithPdftotext } = await importNodeUtil<
+    typeof import("../utils/pdf-pdftotext-node.js")
+  >("pdf-pdftotext-node.js");
   return extractPageTextWithPdftotext(data, pageNumber);
 }
 

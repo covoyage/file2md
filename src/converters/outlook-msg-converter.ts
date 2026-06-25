@@ -81,7 +81,7 @@ async function loadMsgReader(): Promise<MsgReaderConstructor> {
     }
     throw new MissingDependencyException(
       MISSING_DEPENDENCY_MESSAGE.replace("{converter}", "OutlookMsgConverter")
-        .replace("{extension}", ".msg")
+        .replaceAll("{extension}", ".msg")
         .replace("{feature}", "@kenjiuno/msgreader"),
     );
   }
