@@ -104,10 +104,14 @@ function isNodeRuntime(): boolean {
 
 async function extractWithPdftotext(data: Uint8Array): Promise<string | null> {
   if (!isNodeRuntime()) return null;
-  const { extractTextWithPdftotext } = await importNodeUtil<
-    typeof import("../utils/pdf-pdftotext-node.js")
-  >("pdf-pdftotext-node.js");
-  return extractTextWithPdftotext(data);
+  try {
+    const { extractTextWithPdftotext } = await importNodeUtil<
+      typeof import("../utils/pdf-pdftotext-node.js")
+    >("pdf-pdftotext-node.js");
+    return extractTextWithPdftotext(data);
+  } catch {
+    return null;
+  }
 }
 
 async function extractWithPdfplumber(data: Uint8Array): Promise<string | null> {
@@ -124,10 +128,14 @@ async function extractWithPdfplumber(data: Uint8Array): Promise<string | null> {
 
 async function extractWithPdfminer(data: Uint8Array): Promise<string | null> {
   if (!isNodeRuntime()) return null;
-  const { extractTextWithPdfminer } = await importNodeUtil<
-    typeof import("../utils/pdf-pdfminer-node.js")
-  >("pdf-pdfminer-node.js");
-  return extractTextWithPdfminer(data);
+  try {
+    const { extractTextWithPdfminer } = await importNodeUtil<
+      typeof import("../utils/pdf-pdfminer-node.js")
+    >("pdf-pdfminer-node.js");
+    return extractTextWithPdfminer(data);
+  } catch {
+    return null;
+  }
 }
 
 async function extractPageWithPdftotext(
@@ -135,10 +143,14 @@ async function extractPageWithPdftotext(
   pageNumber: number,
 ): Promise<string | null> {
   if (!isNodeRuntime()) return null;
-  const { extractPageTextWithPdftotext } = await importNodeUtil<
-    typeof import("../utils/pdf-pdftotext-node.js")
-  >("pdf-pdftotext-node.js");
-  return extractPageTextWithPdftotext(data, pageNumber);
+  try {
+    const { extractPageTextWithPdftotext } = await importNodeUtil<
+      typeof import("../utils/pdf-pdftotext-node.js")
+    >("pdf-pdftotext-node.js");
+    return extractPageTextWithPdftotext(data, pageNumber);
+  } catch {
+    return null;
+  }
 }
 
 export class PdfConverter extends DocumentConverter {
