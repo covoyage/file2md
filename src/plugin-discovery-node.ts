@@ -201,7 +201,7 @@ async function importPluginModule(modulePath: string): Promise<Record<string, un
     return require(modulePath) as Record<string, unknown>;
   }
 
-  return (await import(pathToFileURL(modulePath).href)) as Record<string, unknown>;
+  return (await import(/* @vite-ignore */ pathToFileURL(modulePath).href)) as Record<string, unknown>;
 }
 
 export async function loadDiscoveredPlugins(

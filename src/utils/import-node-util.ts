@@ -15,7 +15,7 @@ export async function importNodeUtil<T>(filename: string): Promise<T> {
   for (const candidate of candidates) {
     try {
       await access(candidate);
-      return import(pathToFileURL(candidate).href) as Promise<T>;
+      return import(/* @vite-ignore */ pathToFileURL(candidate).href) as Promise<T>;
     } catch {
       // try next candidate
     }

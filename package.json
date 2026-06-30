@@ -76,7 +76,7 @@
     "@kenjiuno/msgreader": "^1.23.0",
     "jschardet": "^3.1.4",
     "magika": "^1.0.0",
-    "pdfjs-dist": "^4.10.38",
+    "pdfjs-dist": "^6.0.227",
     "youtube-transcript-plus": "^1.1.2"
   },
   "devDependencies": {
@@ -84,8 +84,8 @@
     "@types/turndown": "^5.0.5",
     "file2md-sample-plugin": "file:tests/plugins/file2md-sample-plugin",
     "tsup": "^8.4.0",
-    "typescript": "^5.8.2",
-    "vitest": "^3.0.8"
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
   },
   "sideEffects": false
 }

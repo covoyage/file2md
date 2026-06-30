@@ -249,7 +249,7 @@ const md = new File2MD({ enablePlugins: true });
 
 ## Behavior notes
 
-- **PDF (Node):** Python pdfplumber pipeline first (when available). Otherwise pdf.js scans each page for form-style layouts vs prose. Pure prose documents then try pdfminer → `pdftotext` → pdf.js text; mixed PDFs use word-position table extraction on form pages, with per-page `pdftotext` for empty prose pages when available.
+- **PDF (Node):** Python pdfplumber pipeline first (when available). Otherwise pdf.js scans each page for form-style layouts vs prose. Pure prose documents then try pdfminer → `pdftotext` → pdf.js text; mixed PDFs use word-position table extraction on form pages, with per-page `pdftotext` for empty prose pages when available. Optional `pdfjs-dist` 6.x requires **Node.js 22.13+** when pdf.js runs in Node.
 - **PDF (browser):** pdf.js only (form detection + prose line grouping).
 - **Charset:** BOM detection, UTF-8 validation, CJK byte heuristics (GB18030, Shift_JIS, EUC-KR); optional `jschardet` in async detection.
 - **CU output:** uses `@azure/ai-content-understanding` `toLlmInput` when installed; otherwise built-in `cuResultToLlmInput()`.
